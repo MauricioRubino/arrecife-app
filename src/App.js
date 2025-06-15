@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
-import Menu from './src/Menu';
-import Reservas from './src/Reservas';
-import Contacto from './src/Contacto';
-import Ubicacion from './src/Ubicacion';
-import PedirComida from './src/PedirComida';
+import Menu from './Menu.jsx'
+import Reservas from './Reservas.jsx'
+import Contacto from './Contacto.jsx'
+import Ubicacion from './Ubicacion.jsx'
+import PedirComida from './PedirComida.jsx'
+import Header from './Header.jsx';
+import Logo from './assets';
 
 function App() {
   const [page, setPage] = useState('menu');
 
   return (
     <div>
-      <nav>
-        <button onClick={() => setPage('menu')}>Menú</button>
-        <button onClick={() => setPage('reservas')}>Reservas</button>
-        <button onClick={() => setPage('contacto')}>Contacto</button>
-        <button onClick={() => setPage('ubicacion')}>Ubicación</button>
-        <button onClick={() => setPage('pedirComida')}>Pedir Comida</button>
-      </nav>
-
+      <Header onNavigate={setPage} />
       {page === 'menu' && <Menu />}
       {page === 'reservas' && <Reservas />}
       {page === 'contacto' && <Contacto />}
