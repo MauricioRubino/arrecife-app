@@ -1,33 +1,41 @@
 import React, { useState } from 'react';
 
-export default function Reservas() {
-  const [form, setForm] = useState({
-    nombre: '',
-    telefono: '',
-    fecha: '',
-    hora: '',
-    personas: 1,
-  });
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    alert(`Reserva creada para ${form.nombre} el ${form.fecha} a las ${form.hora}`);
-    // Aquí puedes enviar los datos a un backend o API
-  };
-
+function PedirComida() {
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="nombre" placeholder="Nombre" onChange={handleChange} required />
-      <input name="telefono" placeholder="Teléfono" onChange={handleChange} required />
-      <input name="fecha" type="date" onChange={handleChange} required />
-      <input name="hora" type="time" onChange={handleChange} required />
-      <input name="personas" type="number" min="1" value={form.personas} onChange={handleChange} required />
-      <button type="submit">Reservar</button>
-    </form>
+    <div style={styles.container}>
+    
+      <h2 style={styles.title}>¡LO SENTIMOS!</h2>
+      <p style={styles.message}>
+        Estamos trabajando para agregar esta funcionalidad próximamente.
+      </p>
+    </div>
   );
 }
+
+const styles = {
+  container: {
+    maxWidth: '600px',
+    margin: '0 auto',
+    textAlign: 'center',
+    padding: '40px 20px',
+    backgroundColor: '#f0f4f8',
+    borderRadius: '12px',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+     margin: '40px auto 0'
+  },
+  image: {
+    width: '150px',
+    marginBottom: '20px',
+  },
+  title: {
+    fontSize: '24px',
+    color: '#12a79d',
+    marginBottom: '10px',
+  },
+  message: {
+    fontSize: '16px',
+    color: '#666',
+  },
+};
+
+export default PedirComida;

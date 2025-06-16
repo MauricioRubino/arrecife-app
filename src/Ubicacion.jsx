@@ -1,33 +1,53 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export default function Reservas() {
-  const [form, setForm] = useState({
-    nombre: '',
-    telefono: '',
-    fecha: '',
-    hora: '',
-    personas: 1,
-  });
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    alert(`Reserva creada para ${form.nombre} el ${form.fecha} a las ${form.hora}`);
-    // Aquí puedes enviar los datos a un backend o API
-  };
-
+function Ubicacion() {
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="nombre" placeholder="Nombre" onChange={handleChange} required />
-      <input name="telefono" placeholder="Teléfono" onChange={handleChange} required />
-      <input name="fecha" type="date" onChange={handleChange} required />
-      <input name="hora" type="time" onChange={handleChange} required />
-      <input name="personas" type="number" min="1" value={form.personas} onChange={handleChange} required />
-      <button type="submit">Reservar</button>
-    </form>
+    <div style={styles.container}>
+      <h2 style={styles.title}>Ubicación</h2>
+      <p style={styles.text}>
+        Nos encontramos en <strong>La Paloma, Rocha</strong>. Ubicados en el corazón del balneario, rodeados de mar, naturaleza y buena energía. ¡Te esperamos!
+      </p>
+      <div style={styles.mapContainer}>
+        <iframe
+          title="Ubicación en Google Maps"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.7224004363106!2d-54.158062424455665!3d-34.661712972933564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95749cb72cf8e197%3A0x2a87d7b92b18fe5a!2sRestaurante%20Arrecife!5e0!3m2!1ses-419!2suy!4v1750037711949!5m2!1ses-419!2suy"
+          width="100%"
+          height="350"
+          style={styles.map}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
   );
 }
+
+const styles = {
+  container: {
+    padding: '20px',
+    maxWidth: '800px',
+    margin: '0 auto',
+    textAlign: 'center',
+  },
+  title: {
+    fontSize: '28px',
+    color: '#12a79d',
+    marginBottom: '10px',
+  },
+  text: {
+    fontSize: '16px',
+    color: '#444',
+    marginBottom: '20px',
+  },
+  mapContainer: {
+    borderRadius: '12px',
+    overflow: 'hidden',
+    boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+  },
+  map: {
+    border: '0',
+  },
+};
+
+export default Ubicacion;
